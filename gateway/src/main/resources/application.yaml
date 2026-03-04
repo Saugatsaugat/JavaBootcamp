@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: bootcamp-service-route
+          uri: http://localhost:8080
+          predicates:
+            - Path=/v1/country/**
+        - id: auth-service-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/auth/**
+      
+
